@@ -213,7 +213,6 @@ class NetworkService {
         return NetworkException('Sertifika hatası');
 
       case DioExceptionType.unknown:
-      default:
         return NetworkException('Bilinmeyen hata');
     }
   }

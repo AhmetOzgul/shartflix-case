@@ -19,7 +19,7 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
 
   bool get isPasswordVisible => _isPasswordVisible;
 
-  LoginBloc() : super(LoginInitial()) {
+  LoginBloc() : super(LoginInitial(isPasswordVisible: false)) {
     on<LoginSubmitted>(_onLoginSubmitted);
     on<LoginPasswordVisibilityToggled>(_onPasswordVisibilityToggled);
     on<LoginErrorCleared>(_onErrorCleared);
@@ -27,7 +27,7 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
   }
 
   void _onLoginSubmitted(LoginSubmitted event, Emitter<LoginState> emit) async {
-    emit(LoginLoading());
+    emit(LoginLoading(isPasswordVisible: _isPasswordVisible));
 
     try {
       final response = await _authService.login(
@@ -36,7 +36,12 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
       );
 
       if (response.response.code == 200) {
-        emit(LoginSuccess('login.success'.tr()));
+        emit(
+          LoginSuccess(
+            'login.success'.tr(),
+            isPasswordVisible: _isPasswordVisible,
+          ),
+        );
         _clearForm();
 
         await Future.delayed(const Duration(milliseconds: 500));
@@ -50,14 +55,24 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
                   : 'error.server_error'.tr())
             : 'login.invalid_credentials'.tr();
 
-        emit(LoginError(errorMessage));
+        emit(LoginError(errorMessage, isPasswordVisible: _isPasswordVisible));
       }
-    } on BadRequestException catch (e) {
-      emit(LoginError('login.invalid_credentials'.tr()));
+    } on BadRequestException {
+      emit(
+        LoginError(
+          'login.invalid_credentials'.tr(),
+          isPasswordVisible: _isPasswordVisible,
+        ),
+      );
     } on NetworkException catch (e) {
-      emit(LoginError(e.message));
+      emit(LoginError(e.message, isPasswordVisible: _isPasswordVisible));
     } catch (e) {
-      emit(LoginError('error.unknown_error'.tr(args: ['$e'])));
+      emit(
+        LoginError(
+          'error.unknown_error'.tr(args: ['$e']),
+          isPasswordVisible: _isPasswordVisible,
+        ),
+      );
     }
   }
 
@@ -66,17 +81,18 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
     Emitter<LoginState> emit,
   ) {
     _isPasswordVisible = !_isPasswordVisible;
+    emit(LoginInitial(isPasswordVisible: _isPasswordVisible));
   }
 
   void _onErrorCleared(LoginErrorCleared event, Emitter<LoginState> emit) {
     if (state is LoginError) {
-      emit(LoginInitial());
+      emit(LoginInitial(isPasswordVisible: _isPasswordVisible));
     }
   }
 
   void _onSuccessCleared(LoginSuccessCleared event, Emitter<LoginState> emit) {
     if (state is LoginSuccess) {
-      emit(LoginInitial());
+      emit(LoginInitial(isPasswordVisible: _isPasswordVisible));
     }
   }
 

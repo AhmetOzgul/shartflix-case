@@ -103,8 +103,8 @@ class _LoginViewContentState extends State<_LoginViewContent> {
                                       controller: _passwordController,
                                       labelText: 'login.password'.tr(),
                                       prefixIcon: Icons.lock_open_outlined,
-                                      obscureText: !loginBloc.isPasswordVisible,
-                                      suffixIcon: loginBloc.isPasswordVisible
+                                      obscureText: !state.isPasswordVisible,
+                                      suffixIcon: state.isPasswordVisible
                                           ? Icons.visibility_off_outlined
                                           : Icons.visibility_outlined,
                                       onSuffixIconPressed:
