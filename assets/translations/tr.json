@@ -1,0 +1,73 @@
+{
+    "app": {
+        "title": "Shartflix",
+        "welcome": "Shartflix'e Hoş Geldiniz"
+    },
+    "login": {
+        "title": "Merhabalar",
+        "description": "Tempus varius a vitae interdum id tortor elementum tristique eleifend at.",
+        "email": "E-posta",
+        "password": "Şifre",
+        "forgot_password": "Şifremi unuttum",
+        "login_button": "Giriş Yap",
+        "register_button": "Kayıt Ol!",
+        "no_account": "Bir hesabın yok mu?",
+        "has_account": "Zaten hesabınız var mı? Giriş yapın",
+        "success": "Giriş başarılı!",
+        "error": "Giriş başarısız",
+        "loading": "Giriş yapılıyor...",
+        "invalid_credentials": "Giriş başarısız oldu.\nLütfen bilgilerinizi kontrol edin."
+    },
+    "register": {
+        "title": "Kayıt Ol",
+        "name": "Ad Soyad",
+        "name_hint": "Adınızı ve soyadınızı girin",
+        "success": "Kayıt başarılı!",
+        "error": "Kayıt başarısız",
+        "loading": "Kayıt olunuyor..."
+    },
+    "validation": {
+        "email_required": "E-posta adresi gerekli",
+        "email_invalid": "Geçerli bir e-posta adresi girin",
+        "password_required": "Şifre gerekli",
+        "password_min_length": "Şifre en az 6 karakter olmalı",
+        "name_required": "Ad soyad gerekli"
+    },
+    "error": {
+        "network_error": "Ağ hatası",
+        "server_error": "Sunucu hatası",
+        "unknown_error": "Bilinmeyen hata",
+        "connection_timeout": "Bağlantı zaman aşımı",
+        "request_cancelled": "İstek iptal edildi",
+        "bad_request": "Hatalı istek",
+        "unauthorized": "Yetkisiz erişim",
+        "forbidden": "Erişim engellendi",
+        "not_found": "Bulunamadı",
+        "server_unavailable": "Sunucu kullanılamıyor",
+        "page_not_found": "Sayfa bulunamadı"
+    },
+    "profile": {
+        "title": "Profil",
+        "edit_profile": "Profili Düzenle",
+        "change_password": "Şifre Değiştir",
+        "logout": "Çıkış Yap",
+        "settings": "Ayarlar",
+        "language": "Dil",
+        "theme": "Tema",
+        "notifications": "Bildirimler",
+        "about": "Hakkında"
+    },
+    "common": {
+        "ok": "Tamam",
+        "cancel": "İptal",
+        "save": "Kaydet",
+        "delete": "Sil",
+        "edit": "Düzenle",
+        "close": "Kapat",
+        "loading": "Yükleniyor...",
+        "retry": "Tekrar Dene",
+        "no_data": "Veri bulunamadı",
+        "error_occurred": "Bir hata oluştu",
+        "back_to_home": "Ana Sayfaya Dön"
+    }
+}
