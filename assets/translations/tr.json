@@ -19,19 +19,31 @@
         "invalid_credentials": "Giriş başarısız oldu.\nLütfen bilgilerinizi kontrol edin."
     },
     "register": {
-        "title": "Kayıt Ol",
+        "title": "Hoşgeldiniz",
+        "description": "Tempus varius a vitae interdum id tortor elementum tristique eleifend at.",
         "name": "Ad Soyad",
         "name_hint": "Adınızı ve soyadınızı girin",
+        "email": "E-posta",
+        "password": "Şifre",
+        "confirm_password": "Şifre Tekrar",
+        "register_button": "Kayıt Ol",
+        "login_button": "Giriş Yap!",
+        "has_account": "Zaten hesabınız var mı?",
         "success": "Kayıt başarılı!",
         "error": "Kayıt başarısız",
-        "loading": "Kayıt olunuyor..."
+        "loading": "Kayıt olunuyor...",
+        "invalid_credentials": "Kayıt başarısız oldu.\nLütfen bilgilerinizi kontrol edin.",
+        "user_exists": "Bu bilgilerle zaten bir kullanıcı mevcut.",
+        "terms_accept": "**Kullanıcı sözleşmesini** okudum ve onaylıyorum"
     },
     "validation": {
         "email_required": "E-posta adresi gerekli",
         "email_invalid": "Geçerli bir e-posta adresi girin",
         "password_required": "Şifre gerekli",
         "password_min_length": "Şifre en az 6 karakter olmalı",
-        "name_required": "Ad soyad gerekli"
+        "name_required": "Ad soyad gerekli",
+        "confirm_password_required": "Şifre tekrarı gerekli",
+        "passwords_not_match": "Şifreler eşleşmiyor"
     },
     "error": {
         "network_error": "Ağ hatası",

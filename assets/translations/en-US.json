@@ -19,19 +19,31 @@
         "invalid_credentials": "Invalid email or password.\nPlease check your credentials."
     },
     "register": {
-        "title": "Register",
+        "title": "Welcome",
+        "description": "Tempus varius a vitae interdum id tortor elementum tristique eleifend at.",
         "name": "Full Name",
         "name_hint": "Enter your full name",
+        "email": "Email",
+        "password": "Password",
+        "confirm_password": "Confirm Password",
+        "register_button": "Register",
+        "login_button": "Login!",
+        "has_account": "Already have an account?",
         "success": "Registration successful!",
         "error": "Registration failed",
-        "loading": "Registering..."
+        "loading": "Registering...",
+        "invalid_credentials": "Registration failed. Please check your information.",
+        "user_exists": "This information is already in use.",
+        "terms_accept": "I have read and agree to the **Terms of Service**"
     },
     "validation": {
         "email_required": "Email is required",
         "email_invalid": "Please enter a valid email address",
         "password_required": "Password is required",
         "password_min_length": "Password must be at least 6 characters",
-        "name_required": "Full name is required"
+        "name_required": "Full name is required",
+        "confirm_password_required": "Confirm password is required",
+        "passwords_not_match": "Passwords do not match"
     },
     "error": {
         "network_error": "Network error",

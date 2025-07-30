@@ -186,7 +186,15 @@ class NetworkService {
 
       case DioExceptionType.badResponse:
         final statusCode = error.response?.statusCode;
-        final message = error.response?.data?['message'] ?? 'Sunucu hatası';
+        final responseData = error.response?.data;
+
+        String message;
+        if (responseData is Map<String, dynamic> &&
+            responseData['response'] is Map<String, dynamic>) {
+          message = responseData['response']['message'] ?? 'Sunucu hatası';
+        } else {
+          message = responseData?['message'] ?? 'Sunucu hatası';
+        }
 
         switch (statusCode) {
           case 400:

@@ -32,4 +32,17 @@ class Validators {
 
     return null;
   }
+
+  static String? validateConfirmPassword(String? value, String? password) {
+    if (value == null || value.isEmpty) {
+      return 'validation.confirm_password_required'.tr();
+    }
+    if (password == null || password.isEmpty) {
+      return 'validation.password_required'.tr();
+    }
+    if (value != password) {
+      return 'validation.passwords_not_match'.tr();
+    }
+    return null;
+  }
 }

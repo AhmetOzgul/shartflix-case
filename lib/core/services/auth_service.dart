@@ -1,7 +1,9 @@
 import '../constants/api_endpoints.dart';
 import '../../features/login/model/login_response.dart';
+import '../../features/register/model/register_response.dart';
 import '../di/service_locator.dart';
 import 'network_service.dart';
+import 'network_service.dart' show BadRequestException;
 
 class AuthService {
   final NetworkService _networkService = getIt<NetworkService>();
@@ -29,7 +31,7 @@ class AuthService {
     }
   }
 
-  Future<LoginResponse> register({
+  Future<RegisterResponse> register({
     required String email,
     required String password,
     required String name,
@@ -40,14 +42,22 @@ class AuthService {
         data: {'email': email, 'password': password, 'name': name},
       );
 
-      final loginResponse = LoginResponse.fromJson(response.data!);
+      final registerResponse = RegisterResponse.fromJson(response.data!);
 
-      // Token'ı kaydet
-      if (loginResponse.data?.token != null) {
-        await _networkService.saveToken(loginResponse.data!.token);
+      if (registerResponse.response.code != 200) {
+        if (registerResponse.response.code == 400 &&
+            registerResponse.response.message == 'USER_EXISTS') {
+          throw BadRequestException('USER_EXISTS');
+        }
+        throw BadRequestException(registerResponse.response.message);
       }
 
-      return loginResponse;
+      // Token'ı kaydet
+      if (registerResponse.data?.token != null) {
+        await _networkService.saveToken(registerResponse.data!.token);
+      }
+
+      return registerResponse;
     } catch (e) {
       rethrow;
     }
