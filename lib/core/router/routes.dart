@@ -1,0 +1,58 @@
+import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
+import '../../features/login/view/login_page.dart';
+
+class AppRoutes {
+  // Route paths
+  static const String login = '/login';
+  static const String register = '/register';
+  static const String home = '/home';
+  static const String profile = '/profile';
+
+  // Route names
+  static const String loginName = 'login';
+  static const String registerName = 'register';
+  static const String homeName = 'home';
+  static const String profileName = 'profile';
+
+  static Page<dynamic> _buildPageWithTransition(
+    Widget child,
+    GoRouterState state,
+  ) {
+    return CustomTransitionPage(
+      key: state.pageKey,
+      child: child,
+      transitionsBuilder: (context, animation, secondaryAnimation, child) {
+        return SlideTransition(
+          position:
+              Tween<Offset>(
+                begin: const Offset(1.0, 0.0),
+                end: Offset.zero,
+              ).animate(
+                CurvedAnimation(parent: animation, curve: Curves.easeInOut),
+              ),
+          child: child,
+        );
+      },
+      transitionDuration: const Duration(milliseconds: 300),
+    );
+  }
+
+  static final List<RouteBase> routes = [
+    GoRoute(
+      path: login,
+      name: loginName,
+      pageBuilder: (context, state) =>
+          _buildPageWithTransition(const LoginView(), state),
+    ),
+
+    GoRoute(
+      path: home,
+      name: homeName,
+      pageBuilder: (context, state) => _buildPageWithTransition(
+        const Scaffold(body: Center(child: Text('Home Page'))),
+        state,
+      ),
+    ),
+  ];
+}
