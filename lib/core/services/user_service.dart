@@ -111,18 +111,6 @@ class UserService {
     }
   }
 
-  Future<LoginResponse> uploadPhoto({required String photo}) async {
-    try {
-      final response = await _networkService.post<Map<String, dynamic>>(
-        ApiEndpoints.uploadPhoto,
-        data: {'photo': photo},
-      );
-      return LoginResponse.fromJson(response.data!);
-    } catch (e) {
-      rethrow;
-    }
-  }
-
   Future<bool> isLoggedIn() async {
     final token = await _networkService.getToken();
     return token != null && token.isNotEmpty;

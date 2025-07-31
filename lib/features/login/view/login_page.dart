@@ -3,7 +3,7 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:shartflix/features/login/bloc/login_state.dart';
-import '../bloc/login_viewmodel.dart';
+import '../bloc/login_bloc.dart';
 import '../../../shared/widgets/custom_text_form_field.dart';
 import '../../../shared/widgets/primary_button.dart';
 import '../../../shared/widgets/auth_header.dart';
@@ -11,26 +11,26 @@ import '../../../core/utils/validators.dart';
 import '../../../core/router/routes.dart';
 import '../../../shared/widgets/social_buttons.dart';
 
-class LoginView extends StatelessWidget {
-  const LoginView({super.key});
+class LoginPage extends StatelessWidget {
+  const LoginPage({super.key});
 
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
       create: (context) => LoginBloc(),
-      child: const _LoginViewContent(),
+      child: const _LoginPageContent(),
     );
   }
 }
 
-class _LoginViewContent extends StatefulWidget {
-  const _LoginViewContent();
+class _LoginPageContent extends StatefulWidget {
+  const _LoginPageContent();
 
   @override
-  State<_LoginViewContent> createState() => _LoginViewContentState();
+  State<_LoginPageContent> createState() => _LoginPageContentState();
 }
 
-class _LoginViewContentState extends State<_LoginViewContent> {
+class _LoginPageContentState extends State<_LoginPageContent> {
   final _emailController = TextEditingController();
   final _passwordController = TextEditingController();
   final _formKey = GlobalKey<FormState>();

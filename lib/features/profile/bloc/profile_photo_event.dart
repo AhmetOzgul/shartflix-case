@@ -9,6 +9,8 @@ abstract class ProfilePhotoEvent extends Equatable {
   List<Object?> get props => [];
 }
 
+class PickImageFromGallery extends ProfilePhotoEvent {}
+
 class ProfilePhotoSelected extends ProfilePhotoEvent {
   final File photoFile;
 

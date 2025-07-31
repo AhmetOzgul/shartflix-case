@@ -59,13 +59,13 @@ class AppRoutes {
       path: login,
       name: loginName,
       pageBuilder: (context, state) =>
-          _buildPageWithFadeTransition(const LoginView(), state),
+          _buildPageWithFadeTransition(const LoginPage(), state),
     ),
     GoRoute(
       path: register,
       name: registerName,
       pageBuilder: (context, state) =>
-          _buildPageWithFadeTransition(const RegisterView(), state),
+          _buildPageWithFadeTransition(const RegisterPage(), state),
     ),
     GoRoute(
       path: home,

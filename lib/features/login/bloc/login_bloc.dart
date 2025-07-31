@@ -12,9 +12,6 @@ import 'login_state.dart';
 class LoginBloc extends Bloc<LoginEvent, LoginState> {
   final UserService _userService = getIt<UserService>();
 
-  final TextEditingController emailController = TextEditingController();
-  final TextEditingController passwordController = TextEditingController();
-
   bool _isPasswordVisible = false;
 
   bool get isPasswordVisible => _isPasswordVisible;
@@ -42,11 +39,10 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
             isPasswordVisible: _isPasswordVisible,
           ),
         );
-        _clearForm();
 
         await Future.delayed(const Duration(milliseconds: 500));
         if (event.context.mounted) {
-          event.context.go(AppRoutes.home);
+          event.context.go(AppRoutes.uploadPhoto);
         }
       } else {
         final errorMessage = response.response.code == 500
@@ -102,17 +98,5 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
 
   void login(BuildContext context, String email, String password) {
     add(LoginSubmitted(email: email, password: password, context: context));
-  }
-
-  void _clearForm() {
-    emailController.clear();
-    passwordController.clear();
-  }
-
-  @override
-  Future<void> close() {
-    emailController.dispose();
-    passwordController.dispose();
-    return super.close();
   }
 }

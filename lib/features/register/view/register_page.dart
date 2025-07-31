@@ -11,26 +11,26 @@ import '../../../core/utils/validators.dart';
 import '../../../core/router/routes.dart';
 import '../../../shared/widgets/social_buttons.dart';
 
-class RegisterView extends StatelessWidget {
-  const RegisterView({super.key});
+class RegisterPage extends StatelessWidget {
+  const RegisterPage({super.key});
 
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
       create: (context) => RegisterBloc(),
-      child: const _RegisterViewContent(),
+      child: const _RegisterPageContent(),
     );
   }
 }
 
-class _RegisterViewContent extends StatefulWidget {
-  const _RegisterViewContent();
+class _RegisterPageContent extends StatefulWidget {
+  const _RegisterPageContent();
 
   @override
-  State<_RegisterViewContent> createState() => _RegisterViewContentState();
+  State<_RegisterPageContent> createState() => _RegisterPageContentState();
 }
 
-class _RegisterViewContentState extends State<_RegisterViewContent> {
+class _RegisterPageContentState extends State<_RegisterPageContent> {
   final _nameController = TextEditingController();
   final _emailController = TextEditingController();
   final _passwordController = TextEditingController();

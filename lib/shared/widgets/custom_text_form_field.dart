@@ -32,6 +32,9 @@ class CustomTextFormField extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+    final colorScheme = theme.colorScheme;
+
     return TextFormField(
       controller: controller,
       obscureText: obscureText,
@@ -40,51 +43,40 @@ class CustomTextFormField extends StatelessWidget {
       enabled: enabled,
       maxLines: maxLines,
       maxLength: maxLength,
-      style: Theme.of(context).textTheme.bodyLarge,
+      style: theme.textTheme.bodyLarge,
       decoration: InputDecoration(
         hintText: hintText,
         labelText: labelText,
         prefixIcon: prefixIcon != null
-            ? Icon(
-                prefixIcon,
-                color: Theme.of(context).colorScheme.onSurface.withOpacity(0.6),
-              )
+            ? Icon(prefixIcon, color: colorScheme.onSurface.withOpacity(0.6))
             : null,
         suffixIcon: suffixIcon != null
             ? IconButton(
                 icon: Icon(
                   suffixIcon,
-                  color: Theme.of(
-                    context,
-                  ).colorScheme.onSurface.withOpacity(0.6),
+                  color: colorScheme.onSurface.withOpacity(0.6),
                 ),
                 onPressed: onSuffixIconPressed,
               )
             : null,
         filled: true,
-        fillColor: Theme.of(context).colorScheme.surface,
+        fillColor: colorScheme.surface,
         border: OutlineInputBorder(borderRadius: BorderRadius.circular(18)),
         enabledBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(18),
           borderSide: BorderSide(
-            color: Theme.of(context).colorScheme.onSurface.withOpacity(0.2),
+            color: colorScheme.onSurface.withOpacity(0.2),
             width: 1,
           ),
         ),
         focusedBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(18),
-          borderSide: BorderSide(
-            color: Theme.of(context).colorScheme.primary,
-            width: 1,
-          ),
+          borderSide: BorderSide(color: colorScheme.primary, width: 1),
         ),
         labelStyle: TextStyle(
-          color: Theme.of(context).colorScheme.onSurface.withOpacity(0.6),
+          color: colorScheme.onSurface.withValues(alpha: 0.6),
         ),
-        errorStyle: TextStyle(
-          color: Theme.of(context).colorScheme.error,
-          fontSize: 12,
-        ),
+        errorStyle: TextStyle(color: colorScheme.error, fontSize: 12),
       ),
     );
   }

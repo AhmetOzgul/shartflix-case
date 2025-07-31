@@ -1,9 +1,6 @@
-import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:easy_localization/easy_localization.dart';
-import 'package:image_picker/image_picker.dart';
-
 import 'package:go_router/go_router.dart';
 import 'package:shartflix/shared/widgets/auth_header.dart';
 import '../../../shared/widgets/primary_button.dart';
@@ -11,6 +8,7 @@ import '../../../core/router/routes.dart';
 import '../bloc/profile_photo_bloc.dart';
 import '../bloc/profile_photo_event.dart';
 import '../bloc/profile_photo_state.dart';
+import '../widgets/photo_selection_button.dart';
 
 class UploadPhotoPage extends StatefulWidget {
   final bool fromProfile;
@@ -22,8 +20,6 @@ class UploadPhotoPage extends StatefulWidget {
 }
 
 class _UploadPhotoPageState extends State<UploadPhotoPage> {
-  final ImagePicker _picker = ImagePicker();
-
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
@@ -75,69 +71,7 @@ class _UploadPhotoPageState extends State<UploadPhotoPage> {
                             description: "profile.photo.description",
                           ),
                         ),
-                        BlocBuilder<ProfilePhotoBloc, ProfilePhotoState>(
-                          builder: (context, state) {
-                            return GestureDetector(
-                              onTap: () async {
-                                try {
-                                  final XFile? image = await _picker.pickImage(
-                                    source: ImageSource.gallery,
-                                    maxWidth: 1080,
-                                    maxHeight: 1080,
-                                    imageQuality: 80,
-                                  );
-
-                                  if (image != null) {
-                                    context.read<ProfilePhotoBloc>().add(
-                                      ProfilePhotoSelected(
-                                        photoFile: File(image.path),
-                                      ),
-                                    );
-                                  }
-                                } catch (e) {
-                                  ScaffoldMessenger.of(context).showSnackBar(
-                                    SnackBar(
-                                      content: Text(
-                                        'profile.photo.pick_error'.tr(),
-                                      ),
-                                      backgroundColor: Colors.red,
-                                    ),
-                                  );
-                                }
-                              },
-                              child: Container(
-                                width: 165,
-                                height: 165,
-                                decoration: BoxDecoration(
-                                  color: Colors.grey[900],
-                                  borderRadius: BorderRadius.circular(32),
-                                  border: Border.all(
-                                    color: Theme.of(context)
-                                        .colorScheme
-                                        .onPrimary
-                                        .withValues(alpha: 0.1),
-                                    width: 2,
-                                  ),
-                                ),
-                                child: state.selectedImage != null
-                                    ? ClipRRect(
-                                        borderRadius: BorderRadius.circular(29),
-                                        child: Image.file(
-                                          state.selectedImage!,
-                                          width: 165,
-                                          height: 165,
-                                          fit: BoxFit.cover,
-                                        ),
-                                      )
-                                    : const Icon(
-                                        Icons.add,
-                                        color: Colors.white,
-                                        size: 48,
-                                      ),
-                              ),
-                            );
-                          },
-                        ),
+                        const PhotoSelectionButton(),
                       ],
                     ),
                   ),

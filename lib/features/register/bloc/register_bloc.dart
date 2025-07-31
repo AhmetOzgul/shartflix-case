@@ -12,12 +12,6 @@ import 'register_state.dart';
 class RegisterBloc extends Bloc<RegisterEvent, RegisterState> {
   final UserService _userService = getIt<UserService>();
 
-  final TextEditingController nameController = TextEditingController();
-  final TextEditingController emailController = TextEditingController();
-  final TextEditingController passwordController = TextEditingController();
-  final TextEditingController confirmPasswordController =
-      TextEditingController();
-
   bool _isPasswordVisible = false;
 
   bool get isPasswordVisible => _isPasswordVisible;
@@ -49,7 +43,6 @@ class RegisterBloc extends Bloc<RegisterEvent, RegisterState> {
             isPasswordVisible: _isPasswordVisible,
           ),
         );
-        _clearForm();
 
         await Future.delayed(const Duration(milliseconds: 500));
         if (event.context.mounted) {
@@ -142,21 +135,5 @@ class RegisterBloc extends Bloc<RegisterEvent, RegisterState> {
         context: context,
       ),
     );
-  }
-
-  void _clearForm() {
-    nameController.clear();
-    emailController.clear();
-    passwordController.clear();
-    confirmPasswordController.clear();
-  }
-
-  @override
-  Future<void> close() {
-    nameController.dispose();
-    emailController.dispose();
-    passwordController.dispose();
-    confirmPasswordController.dispose();
-    return super.close();
   }
 }
