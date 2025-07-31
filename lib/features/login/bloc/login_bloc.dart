@@ -3,14 +3,14 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:go_router/go_router.dart';
 import '../../../core/di/service_locator.dart';
-import '../../../core/services/auth_service.dart';
+import '../../../core/services/user_service.dart';
 import '../../../core/services/network_service.dart';
 import '../../../core/router/routes.dart';
 import 'login_event.dart';
 import 'login_state.dart';
 
 class LoginBloc extends Bloc<LoginEvent, LoginState> {
-  final AuthService _authService = getIt<AuthService>();
+  final UserService _userService = getIt<UserService>();
 
   final TextEditingController emailController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
@@ -30,7 +30,7 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
     emit(LoginLoading(isPasswordVisible: _isPasswordVisible));
 
     try {
-      final response = await _authService.login(
+      final response = await _userService.login(
         email: event.email.trim(),
         password: event.password,
       );

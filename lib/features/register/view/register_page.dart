@@ -6,6 +6,7 @@ import '../bloc/register_state.dart';
 import '../bloc/register_bloc.dart';
 import '../../../shared/widgets/custom_text_form_field.dart';
 import '../../../shared/widgets/primary_button.dart';
+import '../../../shared/widgets/auth_header.dart';
 import '../../../core/utils/validators.dart';
 import '../../../core/router/routes.dart';
 import '../../../shared/widgets/social_buttons.dart';
@@ -73,25 +74,9 @@ class _RegisterViewContentState extends State<_RegisterViewContent> {
                                   mainAxisAlignment: MainAxisAlignment.end,
                                   crossAxisAlignment: CrossAxisAlignment.center,
                                   children: [
-                                    Text(
-                                      "register.title".tr(),
-                                      style: Theme.of(context)
-                                          .textTheme
-                                          .displayMedium
-                                          ?.copyWith(fontSize: 18),
-                                    ),
-                                    Padding(
-                                      padding: const EdgeInsets.symmetric(
-                                        horizontal: 30,
-                                        vertical: 10,
-                                      ),
-                                      child: Text(
-                                        "register.description".tr(),
-                                        style: Theme.of(
-                                          context,
-                                        ).textTheme.bodySmall,
-                                        textAlign: TextAlign.center,
-                                      ),
+                                    AuthHeader(
+                                      title: "register.title",
+                                      description: "register.description",
                                     ),
                                     Padding(
                                       padding: const EdgeInsets.only(

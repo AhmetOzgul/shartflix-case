@@ -42,6 +42,7 @@
         "password_required": "Şifre gerekli",
         "password_min_length": "Şifre en az 6 karakter olmalı",
         "name_required": "Ad soyad gerekli",
+        "name_min_length": "Ad soyad en az 2 karakter olmalı",
         "confirm_password_required": "Şifre tekrarı gerekli",
         "passwords_not_match": "Şifreler eşleşmiyor"
     },
@@ -67,7 +68,20 @@
         "language": "Dil",
         "theme": "Tema",
         "notifications": "Bildirimler",
-        "about": "Hakkında"
+        "about": "Hakkında",
+        "photo": {
+            "title": "Profil Detayı",
+            "upload_title": "Fotoğraflarınızı Yükleyin",
+            "description": "Resources out incentivize\nrelaxation floor loss cc.",
+            "continue": "Devam Et",
+            "skip": "Bu adımı geç",
+            "skip_title": "Adımı Geçmek İstiyor musunuz?",
+            "skip_message": "Bu adımı geçmek istediğinize emin misiniz? Dilediğiniz zaman ayarlardan fotoğraf yükleyebilirsiniz.",
+            "skip_confirm": "Geç",
+            "upload_success": "Profil fotoğrafınız başarıyla yüklendi",
+            "upload_error": "Fotoğraf yüklenirken bir hata oluştu",
+            "pick_error": "Fotoğraf seçilirken bir hata oluştu"
+        }
     },
     "common": {
         "ok": "Tamam",

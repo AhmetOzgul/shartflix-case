@@ -1,8 +1,8 @@
 class ApiEndpoints {
   // USER
   static const String login = '/user/login';
-  static const String profile = '/user/profile';
   static const String register = '/user/register';
+  static const String profile = '/user/profile';
   static const String uploadPhoto = '/user/upload_photo';
 
   // MOVIE

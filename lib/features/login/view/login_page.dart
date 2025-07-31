@@ -6,6 +6,7 @@ import 'package:shartflix/features/login/bloc/login_state.dart';
 import '../bloc/login_viewmodel.dart';
 import '../../../shared/widgets/custom_text_form_field.dart';
 import '../../../shared/widgets/primary_button.dart';
+import '../../../shared/widgets/auth_header.dart';
 import '../../../core/utils/validators.dart';
 import '../../../core/router/routes.dart';
 import '../../../shared/widgets/social_buttons.dart';
@@ -68,25 +69,9 @@ class _LoginViewContentState extends State<_LoginViewContent> {
                                   mainAxisAlignment: MainAxisAlignment.end,
                                   crossAxisAlignment: CrossAxisAlignment.center,
                                   children: [
-                                    Text(
-                                      "login.title".tr(),
-                                      style: Theme.of(context)
-                                          .textTheme
-                                          .displayMedium
-                                          ?.copyWith(fontSize: 18),
-                                    ),
-                                    Padding(
-                                      padding: const EdgeInsets.symmetric(
-                                        horizontal: 30,
-                                        vertical: 10,
-                                      ),
-                                      child: Text(
-                                        "login.description".tr(),
-                                        style: Theme.of(
-                                          context,
-                                        ).textTheme.bodySmall,
-                                        textAlign: TextAlign.center,
-                                      ),
+                                    AuthHeader(
+                                      title: "login.title",
+                                      description: "login.description",
                                     ),
                                     Padding(
                                       padding: const EdgeInsets.only(

@@ -2,17 +2,20 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import '../../features/login/view/login_page.dart';
 import '../../features/register/view/register_page.dart';
+import '../../features/profile/view/upload_photo_page.dart';
 
 class AppRoutes {
   static const String login = '/login';
   static const String register = '/register';
   static const String home = '/home';
   static const String profile = '/profile';
+  static const String uploadPhoto = '/upload-photo';
 
   static const String loginName = 'login';
   static const String registerName = 'register';
   static const String homeName = 'home';
   static const String profileName = 'profile';
+  static const String uploadPhotoName = 'upload-photo';
 
   static Page<dynamic> _buildPageWithTransition(
     Widget child,
@@ -72,13 +75,22 @@ class AppRoutes {
         state,
       ),
     ),
+    // GoRoute(
+    //   path: profile,
+    //   name: profileName,
+    //   pageBuilder: (context, state) =>
+    //       _buildPageWithTransition(const ProfilePage(), state),
+    // ),
     GoRoute(
-      path: profile,
-      name: profileName,
-      pageBuilder: (context, state) => _buildPageWithTransition(
-        const Scaffold(body: Center(child: Text('Profile Page'))),
-        state,
-      ),
+      path: uploadPhoto,
+      name: uploadPhotoName,
+      pageBuilder: (context, state) {
+        final fromProfile = state.uri.queryParameters['fromProfile'] == 'true';
+        return _buildPageWithTransition(
+          UploadPhotoPage(fromProfile: fromProfile),
+          state,
+        );
+      },
     ),
   ];
 }

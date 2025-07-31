@@ -42,7 +42,8 @@
         "password_required": "Password is required",
         "password_min_length": "Password must be at least 6 characters",
         "name_required": "Full name is required",
-        "confirm_password_required": "Confirm password is required",
+        "name_min_length": "Full name must be at least 2 characters",
+        "confirm_password_required": "Password confirmation is required",
         "passwords_not_match": "Passwords do not match"
     },
     "error": {
@@ -67,7 +68,20 @@
         "language": "Language",
         "theme": "Theme",
         "notifications": "Notifications",
-        "about": "About"
+        "about": "About",
+        "photo": {
+            "title": "Profile Details",
+            "upload_title": "Upload Your Photos",
+            "description": "Resources out incentivize\nrelaxation floor loss cc.",
+            "continue": "Continue",
+            "upload_success": "Your profile photo has been uploaded successfully",
+            "upload_error": "An error occurred while uploading the photo",
+            "pick_error": "An error occurred while selecting the photo",
+            "skip": "Skip this step",
+            "skip_title": "Skip This Step?",
+            "skip_message": "Are you sure you want to skip this step? You can upload a photo from settings anytime.",
+            "skip_confirm": "Skip"
+        }
     },
     "common": {
         "ok": "OK",

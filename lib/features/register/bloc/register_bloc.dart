@@ -3,14 +3,14 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:go_router/go_router.dart';
 import '../../../core/di/service_locator.dart';
-import '../../../core/services/auth_service.dart';
+import '../../../core/services/user_service.dart';
 import '../../../core/services/network_service.dart';
 import '../../../core/router/routes.dart';
 import 'register_event.dart';
 import 'register_state.dart';
 
 class RegisterBloc extends Bloc<RegisterEvent, RegisterState> {
-  final AuthService _authService = getIt<AuthService>();
+  final UserService _userService = getIt<UserService>();
 
   final TextEditingController nameController = TextEditingController();
   final TextEditingController emailController = TextEditingController();
@@ -36,7 +36,7 @@ class RegisterBloc extends Bloc<RegisterEvent, RegisterState> {
     emit(RegisterLoading(isPasswordVisible: _isPasswordVisible));
 
     try {
-      final response = await _authService.register(
+      final response = await _userService.register(
         name: event.name.trim(),
         email: event.email.trim(),
         password: event.password,
@@ -53,7 +53,7 @@ class RegisterBloc extends Bloc<RegisterEvent, RegisterState> {
 
         await Future.delayed(const Duration(milliseconds: 500));
         if (event.context.mounted) {
-          event.context.go(AppRoutes.home);
+          event.context.go(AppRoutes.uploadPhoto);
         }
       } else {
         final responseMessage = response.response.message;
