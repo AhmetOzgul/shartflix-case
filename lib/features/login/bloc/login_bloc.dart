@@ -42,7 +42,7 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
 
         await Future.delayed(const Duration(milliseconds: 500));
         if (event.context.mounted) {
-          event.context.go(AppRoutes.uploadPhoto);
+          event.context.go(AppRoutes.home);
         }
       } else {
         final errorMessage = response.response.code == 500

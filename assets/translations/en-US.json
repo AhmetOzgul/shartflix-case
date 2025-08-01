@@ -62,8 +62,13 @@
     "profile": {
         "title": "Profile",
         "edit_profile": "Edit Profile",
+        "edit_photo": "Edit Photo",
+        "favorites": "Favorites",
         "change_password": "Change Password",
         "logout": "Logout",
+        "logout_title": "Do you want to logout?",
+        "logout_message": "Are you sure you want to logout?",
+        "logout_confirm": "Logout",
         "settings": "Settings",
         "language": "Language",
         "theme": "Theme",
@@ -82,6 +87,14 @@
             "skip_message": "Are you sure you want to skip this step? You can upload a photo from settings anytime.",
             "skip_confirm": "Skip"
         }
+    },
+    "home": {
+        "title": "Movies",
+        "retry": "Retry"
+    },
+    "main": {
+        "home": "Home",
+        "profile": "Profile"
     },
     "common": {
         "ok": "OK",

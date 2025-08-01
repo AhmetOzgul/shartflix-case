@@ -1,41 +1,23 @@
-import '../constants/api_endpoints.dart';
-import '../di/service_locator.dart';
+import 'package:get_it/get_it.dart';
+import '../../features/home/models/movie_model.dart';
 import 'network_service.dart';
 
 class MovieService {
-  final NetworkService _networkService = getIt<NetworkService>();
+  final NetworkService _networkService = GetIt.instance<NetworkService>();
 
-  // Favori film ekleme
-  Future<Map<String, dynamic>> addFavorite({required String movieId}) async {
+  Future<MovieListResponse> getMovies({required int page}) async {
     try {
-      final response = await _networkService.post<Map<String, dynamic>>(
-        ApiEndpoints.favorite.replaceAll('{favoriteId}', movieId),
+      final response = await _networkService.get<Map<String, dynamic>>(
+        '/movie/list',
+        queryParameters: {'page': page},
       );
-      return response.data ?? {};
-    } catch (e) {
-      rethrow;
-    }
-  }
+      final movieListResponse = MovieListResponse.fromJson(response.data!);
 
-  // Film listesi
-  Future<List<Map<String, dynamic>>> getMovieList() async {
-    try {
-      final response = await _networkService.get<List<Map<String, dynamic>>>(
-        ApiEndpoints.movieList,
-      );
-      return response.data ?? [];
-    } catch (e) {
-      rethrow;
-    }
-  }
+      if (response.data!['response']['code'] != 200) {
+        throw BadRequestException(response.data!['response']['message']);
+      }
 
-  // Favori filmleri listeleme
-  Future<List<Map<String, dynamic>>> getFavorites() async {
-    try {
-      final response = await _networkService.get<List<Map<String, dynamic>>>(
-        ApiEndpoints.favorites,
-      );
-      return response.data ?? [];
+      return movieListResponse;
     } catch (e) {
       rethrow;
     }

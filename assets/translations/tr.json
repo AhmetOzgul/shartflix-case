@@ -62,8 +62,13 @@
     "profile": {
         "title": "Profil",
         "edit_profile": "Profili Düzenle",
+        "edit_photo": "Fotoğrafı Düzenle",
+        "favorites": "Favoriler",
         "change_password": "Şifre Değiştir",
         "logout": "Çıkış Yap",
+        "logout_title": "Çıkış Yapmak İstiyor musunuz?",
+        "logout_message": "Çıkış yapmak istediğinize emin misiniz?",
+        "logout_confirm": "Çıkış Yap",
         "settings": "Ayarlar",
         "language": "Dil",
         "theme": "Tema",
@@ -82,6 +87,14 @@
             "upload_error": "Fotoğraf yüklenirken bir hata oluştu",
             "pick_error": "Fotoğraf seçilirken bir hata oluştu"
         }
+    },
+    "home": {
+        "title": "Filmler",
+        "retry": "Tekrar Dene"
+    },
+    "main": {
+        "home": "Ana Sayfa",
+        "profile": "Profil"
     },
     "common": {
         "ok": "Tamam",

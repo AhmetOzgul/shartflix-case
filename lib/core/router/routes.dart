@@ -3,6 +3,7 @@ import 'package:go_router/go_router.dart';
 import '../../features/login/view/login_page.dart';
 import '../../features/register/view/register_page.dart';
 import '../../features/profile/view/upload_photo_page.dart';
+import '../../features/home/view/main_page.dart';
 
 class AppRoutes {
   static const String login = '/login';
@@ -70,10 +71,8 @@ class AppRoutes {
     GoRoute(
       path: home,
       name: homeName,
-      pageBuilder: (context, state) => _buildPageWithTransition(
-        const Scaffold(body: Center(child: Text('Home Page'))),
-        state,
-      ),
+      pageBuilder: (context, state) =>
+          _buildPageWithTransition(const MainPage(), state),
     ),
     // GoRoute(
     //   path: profile,
