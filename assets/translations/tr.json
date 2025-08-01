@@ -90,7 +90,9 @@
     },
     "home": {
         "title": "Filmler",
-        "retry": "Tekrar Dene"
+        "retry": "Tekrar Dene",
+        "more": "Daha Fazlası",
+        "less": "Daha Az"
     },
     "main": {
         "home": "Ana Sayfa",

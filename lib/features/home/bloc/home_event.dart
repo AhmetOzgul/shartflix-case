@@ -8,12 +8,7 @@ abstract class HomeEvent extends Equatable {
 }
 
 class LoadMovies extends HomeEvent {
-  final int page;
-
-  const LoadMovies({this.page = 1});
-
-  @override
-  List<Object?> get props => [page];
+  const LoadMovies();
 }
 
 class LoadMoreMovies extends HomeEvent {
@@ -27,4 +22,13 @@ class LoadMoreMovies extends HomeEvent {
 
 class RefreshMovies extends HomeEvent {
   const RefreshMovies();
+}
+
+class ToggleFavorite extends HomeEvent {
+  final String movieId;
+
+  const ToggleFavorite({required this.movieId});
+
+  @override
+  List<Object?> get props => [movieId];
 }

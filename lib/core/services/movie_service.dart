@@ -1,5 +1,6 @@
 import 'package:get_it/get_it.dart';
 import '../../features/home/models/movie_model.dart';
+import '../../features/home/models/favorite_response.dart';
 import 'network_service.dart';
 
 class MovieService {
@@ -18,6 +19,20 @@ class MovieService {
       }
 
       return movieListResponse;
+    } catch (e) {
+      rethrow;
+    }
+  }
+
+  Future<FavoriteResponse> toggleFavorite({required String movieId}) async {
+    try {
+      final response = await _networkService.post<Map<String, dynamic>>(
+        '/movie/favorite/$movieId',
+      );
+
+      final favoriteResponse = FavoriteResponse.fromJson(response.data!);
+
+      return favoriteResponse;
     } catch (e) {
       rethrow;
     }

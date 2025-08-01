@@ -1,5 +1,5 @@
-import 'package:flutter/material.dart';
 import 'package:easy_localization/easy_localization.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'home_page.dart';
 import '../../profile/view/profile_page.dart';
@@ -49,13 +49,13 @@ class _MainPageState extends State<MainPage> {
                 children: [
                   _buildNavItem(
                     icon: Icons.home,
-                    label: 'Anasayfa',
+                    label: 'main.home'.tr(),
                     isSelected: _currentIndex == 0,
                     onTap: () => setState(() => _currentIndex = 0),
                   ),
                   _buildNavItem(
                     icon: Icons.person,
-                    label: 'Profil',
+                    label: 'main.profile'.tr(),
                     isSelected: _currentIndex == 1,
                     onTap: () => setState(() => _currentIndex = 1),
                   ),

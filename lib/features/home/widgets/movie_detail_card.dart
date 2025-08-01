@@ -1,6 +1,12 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import '../models/movie_model.dart';
+import '../bloc/home_bloc.dart';
+import '../bloc/home_event.dart';
+import '../bloc/home_state.dart';
+import 'lottie_heart_animation.dart';
 
 class MovieDetailCard extends StatefulWidget {
   final Movie movie;
@@ -13,6 +19,26 @@ class MovieDetailCard extends StatefulWidget {
 
 class _MovieDetailCardState extends State<MovieDetailCard> {
   bool _isDescriptionExpanded = false;
+  bool _showHeartAnimation = false;
+  bool _wasFavorite = false;
+
+  @override
+  void initState() {
+    super.initState();
+    _wasFavorite = widget.movie.isFavorite;
+  }
+
+  void _showHeartAnimationEffect() {
+    setState(() {
+      _showHeartAnimation = true;
+    });
+  }
+
+  void _hideHeartAnimation() {
+    setState(() {
+      _showHeartAnimation = false;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -36,35 +62,78 @@ class _MovieDetailCardState extends State<MovieDetailCard> {
             fadeInDuration: const Duration(milliseconds: 200),
             fadeOutDuration: const Duration(milliseconds: 100),
           ),
+          BlocBuilder<HomeBloc, HomeState>(
+            builder: (context, state) {
+              final isFavoriteLoading =
+                  state is HomeLoaded && state.isFavoriteLoading;
 
-          Positioned(
-            bottom: MediaQuery.of(context).size.height * 0.2,
-            right: 15,
-            child: Container(
-              width: 50,
-              height: 70,
-              decoration: BoxDecoration(
-                color: Colors.black.withValues(alpha: 0.6),
-                borderRadius: BorderRadius.circular(30),
-                border: Border.all(
-                  color: Theme.of(
-                    context,
-                  ).colorScheme.onPrimary.withValues(alpha: 0.35),
-                  width: 1,
+              if (state is HomeLoaded) {
+                final currentMovie = state.movies.firstWhere(
+                  (movie) => movie.id == widget.movie.id,
+                  orElse: () => widget.movie,
+                );
+                if (!_wasFavorite &&
+                    currentMovie.isFavorite &&
+                    !_showHeartAnimation) {
+                  WidgetsBinding.instance.addPostFrameCallback((_) {
+                    _showHeartAnimationEffect();
+                  });
+                }
+                _wasFavorite = currentMovie.isFavorite;
+              }
+
+              return Positioned(
+                bottom: MediaQuery.of(context).size.height * 0.2,
+                right: 15,
+                child: Container(
+                  width: 50,
+                  height: 70,
+                  decoration: BoxDecoration(
+                    color: Colors.black.withValues(alpha: 0.6),
+                    borderRadius: BorderRadius.circular(30),
+                    border: Border.all(
+                      color: Theme.of(
+                        context,
+                      ).colorScheme.onPrimary.withValues(alpha: 0.35),
+                      width: 1,
+                    ),
+                  ),
+                  child: IconButton(
+                    onPressed: isFavoriteLoading
+                        ? null
+                        : () {
+                            context.read<HomeBloc>().add(
+                              ToggleFavorite(movieId: widget.movie.id),
+                            );
+                          },
+                    icon: isFavoriteLoading
+                        ? const SizedBox(
+                            width: 20,
+                            height: 20,
+                            child: CircularProgressIndicator(
+                              color: Colors.white,
+                              strokeWidth: 2,
+                            ),
+                          )
+                        : Icon(
+                            widget.movie.isFavorite
+                                ? Icons.favorite
+                                : Icons.favorite_border,
+                            color: Colors.white,
+                            size: 30,
+                          ),
+                  ),
                 ),
-              ),
-              child: IconButton(
-                onPressed: () {},
-                icon: Icon(
-                  widget.movie.isFavorite
-                      ? Icons.favorite
-                      : Icons.favorite_border,
-                  color: Colors.white,
-                  size: 30,
-                ),
+              );
+            },
+          ),
+
+          if (_showHeartAnimation)
+            Positioned.fill(
+              child: LottieHeartAnimation(
+                onAnimationComplete: _hideHeartAnimation,
               ),
             ),
-          ),
 
           Positioned(
             bottom: 0,
@@ -157,7 +226,9 @@ class _MovieDetailCardState extends State<MovieDetailCard> {
                           });
                         },
                         child: Text(
-                          _isDescriptionExpanded ? 'Daha Az' : 'Daha Fazlası',
+                          _isDescriptionExpanded
+                              ? 'home.less'.tr()
+                              : 'home.more'.tr(),
                           style: const TextStyle(
                             color: Colors.white,
                             fontWeight: FontWeight.bold,

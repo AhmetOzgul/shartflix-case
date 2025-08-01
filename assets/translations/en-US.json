@@ -90,7 +90,9 @@
     },
     "home": {
         "title": "Movies",
-        "retry": "Retry"
+        "retry": "Retry",
+        "more": "Show More",
+        "less": "Show Less"
     },
     "main": {
         "home": "Home",
