@@ -5,9 +5,9 @@ import 'package:go_router/go_router.dart';
 import 'package:shartflix/shared/widgets/auth_header.dart';
 import '../../../shared/widgets/primary_button.dart';
 import '../../../core/router/routes.dart';
-import '../bloc/profile_photo_bloc.dart';
-import '../bloc/profile_photo_event.dart';
-import '../bloc/profile_photo_state.dart';
+import '../bloc/upload_photo/profile_photo_bloc.dart';
+import '../bloc/upload_photo/profile_photo_event.dart';
+import '../bloc/upload_photo/profile_photo_state.dart';
 import '../widgets/photo_selection_button.dart';
 
 class UploadPhotoPage extends StatefulWidget {

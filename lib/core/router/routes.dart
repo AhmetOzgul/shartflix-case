@@ -84,9 +84,10 @@ class AppRoutes {
       path: uploadPhoto,
       name: uploadPhotoName,
       pageBuilder: (context, state) {
-        final fromProfile = state.uri.queryParameters['fromProfile'] == 'true';
+        final fromProfile = state.extra as Map<String, dynamic>?;
+        final isFromProfile = fromProfile?['fromProfile'] ?? false;
         return _buildPageWithTransition(
-          UploadPhotoPage(fromProfile: fromProfile),
+          UploadPhotoPage(fromProfile: isFromProfile),
           state,
         );
       },

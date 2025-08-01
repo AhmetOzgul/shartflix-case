@@ -74,6 +74,11 @@
         "theme": "Theme",
         "notifications": "Notifications",
         "about": "About",
+        "limited_offer": "Limited Offer",
+        "add_photo": "Add Photo",
+        "liked_movies": "Liked Movies",
+        "retry": "Retry",
+        "no_favorites": "No favorites yet",
         "photo": {
             "title": "Profile Details",
             "upload_title": "Upload Your Photos",

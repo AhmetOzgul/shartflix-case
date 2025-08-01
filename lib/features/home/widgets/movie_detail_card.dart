@@ -63,6 +63,21 @@ class _MovieDetailCardState extends State<MovieDetailCard> {
             fadeOutDuration: const Duration(milliseconds: 100),
           ),
           BlocBuilder<HomeBloc, HomeState>(
+            buildWhen: (previous, current) {
+              if (current is HomeLoaded && previous is HomeLoaded) {
+                final previousMovie = previous.movies.firstWhere(
+                  (movie) => movie.id == widget.movie.id,
+                  orElse: () => widget.movie,
+                );
+                final currentMovie = current.movies.firstWhere(
+                  (movie) => movie.id == widget.movie.id,
+                  orElse: () => widget.movie,
+                );
+                return previousMovie.isFavorite != currentMovie.isFavorite ||
+                    previous.isFavoriteLoading != current.isFavoriteLoading;
+              }
+              return true;
+            },
             builder: (context, state) {
               final isFavoriteLoading =
                   state is HomeLoaded && state.isFavoriteLoading;

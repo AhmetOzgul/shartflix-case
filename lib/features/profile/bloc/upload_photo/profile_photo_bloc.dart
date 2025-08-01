@@ -3,8 +3,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:get_it/get_it.dart';
 import 'package:image_picker/image_picker.dart';
-import '../../../core/services/user_service.dart';
-import '../../../core/services/network_service.dart';
+import '../../../../core/services/user_service.dart';
+import '../../../../core/services/network_service.dart';
 import 'profile_photo_event.dart';
 import 'profile_photo_state.dart';
 

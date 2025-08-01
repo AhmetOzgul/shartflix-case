@@ -60,7 +60,7 @@
         "page_not_found": "Sayfa bulunamadı"
     },
     "profile": {
-        "title": "Profil",
+        "title": "Profil Detayı",
         "edit_profile": "Profili Düzenle",
         "edit_photo": "Fotoğrafı Düzenle",
         "favorites": "Favoriler",
@@ -74,6 +74,7 @@
         "theme": "Tema",
         "notifications": "Bildirimler",
         "about": "Hakkında",
+        "no_favorites": "Henüz beğendiğiniz film yok",
         "photo": {
             "title": "Profil Detayı",
             "upload_title": "Fotoğraflarınızı Yükleyin",
@@ -86,7 +87,11 @@
             "upload_success": "Profil fotoğrafınız başarıyla yüklendi",
             "upload_error": "Fotoğraf yüklenirken bir hata oluştu",
             "pick_error": "Fotoğraf seçilirken bir hata oluştu"
-        }
+        },
+        "limited_offer": "Sınırlı Teklif",
+        "add_photo": "Fotoğraf Ekle",
+        "liked_movies": "Beğendiğim Filmler",
+        "retry": "Tekrar Dene"
     },
     "home": {
         "title": "Filmler",

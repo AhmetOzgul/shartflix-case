@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import '../bloc/profile_photo_bloc.dart';
-import '../bloc/profile_photo_event.dart';
-import '../bloc/profile_photo_state.dart';
+import '../bloc/upload_photo/profile_photo_bloc.dart';
+import '../bloc/upload_photo/profile_photo_event.dart';
+import '../bloc/upload_photo/profile_photo_state.dart';
 
 class PhotoSelectionButton extends StatelessWidget {
   const PhotoSelectionButton({super.key});

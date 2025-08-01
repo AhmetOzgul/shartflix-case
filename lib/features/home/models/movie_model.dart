@@ -109,7 +109,8 @@ class Movie {
       posterUrl = posterUrl.replaceFirst('http://', 'https://');
     }
 
-    String movieId = json['id'] ?? json['_id'] ?? '';
+    // API'de _id field'ı var, id field'ı yok
+    String movieId = json['_id'] ?? json['id'] ?? '';
 
     return Movie(
       id: movieId,

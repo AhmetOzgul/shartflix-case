@@ -1,10 +1,12 @@
-import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'home_page.dart';
 import '../../profile/view/profile_page.dart';
 import '../bloc/home_bloc.dart';
 import '../bloc/home_event.dart';
+import '../../profile/bloc/profile/profile_bloc.dart';
+import '../../profile/bloc/profile/profile_event.dart';
 
 class MainPage extends StatefulWidget {
   const MainPage({super.key});
@@ -16,23 +18,31 @@ class MainPage extends StatefulWidget {
 class _MainPageState extends State<MainPage> {
   int _currentIndex = 0;
   late final HomeBloc _homeBloc;
+  late final ProfileBloc _profileBloc;
 
   @override
   void initState() {
     super.initState();
     _homeBloc = HomeBloc()..add(const LoadMovies());
+    _profileBloc = ProfileBloc()..add(const LoadProfile());
+
+    _homeBloc.setProfileBloc(_profileBloc);
   }
 
   @override
   void dispose() {
     _homeBloc.close();
+    _profileBloc.close();
     super.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider.value(
-      value: _homeBloc,
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider.value(value: _homeBloc),
+        BlocProvider.value(value: _profileBloc),
+      ],
       child: Scaffold(
         backgroundColor: Colors.black,
         body: IndexedStack(

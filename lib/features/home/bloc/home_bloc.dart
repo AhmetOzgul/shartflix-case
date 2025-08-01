@@ -3,15 +3,22 @@ import 'package:get_it/get_it.dart';
 import '../../../core/services/movie_service.dart';
 import 'home_event.dart';
 import 'home_state.dart';
+import '../../profile/bloc/profile/profile_bloc.dart';
+import '../../profile/bloc/profile/profile_event.dart';
 
 class HomeBloc extends Bloc<HomeEvent, HomeState> {
   final MovieService _movieService = GetIt.instance<MovieService>();
+  ProfileBloc? _profileBloc;
 
   HomeBloc() : super(HomeInitial()) {
     on<LoadMovies>(_onLoadMovies);
     on<LoadMoreMovies>(_onLoadMoreMovies);
     on<RefreshMovies>(_onRefreshMovies);
     on<ToggleFavorite>(_onToggleFavorite);
+  }
+
+  void setProfileBloc(ProfileBloc profileBloc) {
+    _profileBloc = profileBloc;
   }
 
   Future<void> _onLoadMovies(LoadMovies event, Emitter<HomeState> emit) async {
@@ -105,7 +112,10 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
             isFavoriteLoading: false,
           ),
         );
+
+        _profileBloc?.add(const LoadFavorites());
       } catch (e) {
+        emit(currentState.copyWith(isFavoriteLoading: false));
         emit(HomeError(e.toString()));
       }
     }

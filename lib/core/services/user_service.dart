@@ -1,10 +1,11 @@
 import 'dart:io';
 import 'package:get_it/get_it.dart';
 import 'package:dio/dio.dart';
+import 'package:shartflix/features/login/models/login_response.dart';
+import 'package:shartflix/features/profile/models/profile_photo_response.dart';
+import 'package:shartflix/features/profile/models/profile_response.dart';
 import '../constants/api_endpoints.dart';
-import '../../features/login/model/login_response.dart';
 import '../../features/register/model/register_response.dart';
-import '../../features/profile/model/profile_photo_response.dart';
 import 'network_service.dart';
 
 class UserService {
@@ -99,13 +100,19 @@ class UserService {
     }
   }
 
-  Future<LoginResponse> getProfile() async {
+  Future<ProfileResponse> getProfile() async {
     try {
       final response = await _networkService.get<Map<String, dynamic>>(
         ApiEndpoints.profile,
       );
 
-      return LoginResponse.fromJson(response.data!);
+      final profileResponse = ProfileResponse.fromJson(response.data!);
+
+      if (response.data!['response']['code'] != 200) {
+        throw BadRequestException(response.data!['response']['message']);
+      }
+
+      return profileResponse;
     } catch (e) {
       rethrow;
     }
