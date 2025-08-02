@@ -79,6 +79,19 @@
         "liked_movies": "Liked Movies",
         "retry": "Retry",
         "no_favorites": "No favorites yet",
+        "offer": {
+            "title": "Limited Offer",
+            "description": "Choose a token package to earn bonuses\nand unlock new episodes!",
+            "bonuses_title": "Bonuses You'll Get",
+            "bonus_premium": "Premium Account",
+            "bonus_matches": "More Matches",
+            "bonus_highlight": "Highlight",
+            "bonus_likes": "More Likes",
+            "select_package": "Select a token package to unlock",
+            "token": "Token",
+            "price_per_week": "Per week",
+            "view_all_tokens": "View All Tokens"
+        },
         "photo": {
             "title": "Profile Details",
             "upload_title": "Upload Your Photos",

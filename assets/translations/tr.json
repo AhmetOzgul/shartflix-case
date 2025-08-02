@@ -75,6 +75,23 @@
         "notifications": "Bildirimler",
         "about": "Hakkında",
         "no_favorites": "Henüz beğendiğiniz film yok",
+        "limited_offer": "Sınırlı Teklif",
+        "add_photo": "Fotoğraf Ekle",
+        "liked_movies": "Beğendiğim Filmler",
+        "retry": "Tekrar Dene",
+        "offer": {
+            "title": "Sınırlı Teklif",
+            "description": "Jeton paketini seçerek bonus kazan\nve yeni bölümlerin kilidini açın!",
+            "bonuses_title": "Alacağınız Bonuslar",
+            "bonus_premium": "Premium Hesap",
+            "bonus_matches": "Daha Fazla Eşleşme",
+            "bonus_highlight": "Öne Çıkarma",
+            "bonus_likes": "Daha Fazla Beğeni",
+            "select_package": "Kilidi açmak için bir jeton paketi seçin",
+            "token": "Jeton",
+            "price_per_week": "Başına haftalık",
+            "view_all_tokens": "Tüm Jetonları Gör"
+        },
         "photo": {
             "title": "Profil Detayı",
             "upload_title": "Fotoğraflarınızı Yükleyin",
@@ -87,11 +104,7 @@
             "upload_success": "Profil fotoğrafınız başarıyla yüklendi",
             "upload_error": "Fotoğraf yüklenirken bir hata oluştu",
             "pick_error": "Fotoğraf seçilirken bir hata oluştu"
-        },
-        "limited_offer": "Sınırlı Teklif",
-        "add_photo": "Fotoğraf Ekle",
-        "liked_movies": "Beğendiğim Filmler",
-        "retry": "Tekrar Dene"
+        }
     },
     "home": {
         "title": "Filmler",

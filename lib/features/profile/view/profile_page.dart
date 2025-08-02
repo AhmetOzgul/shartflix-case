@@ -6,6 +6,7 @@ import 'package:shartflix/features/profile/bloc/profile/profile_event.dart';
 import 'package:shartflix/features/profile/bloc/profile/profile_state.dart';
 import '../widgets/profile_info_widget.dart';
 import '../widgets/liked_movies_widget.dart';
+import '../widgets/limited_offer_bottom_sheet.dart';
 
 class ProfilePage extends StatefulWidget {
   const ProfilePage({super.key});
@@ -18,6 +19,15 @@ class _ProfilePageState extends State<ProfilePage> {
   @override
   void initState() {
     super.initState();
+  }
+
+  void _showLimitedOfferBottomSheet() {
+    showModalBottomSheet(
+      context: context,
+      isScrollControlled: true,
+      backgroundColor: Colors.transparent,
+      builder: (context) => const LimitedOfferBottomSheet(),
+    );
   }
 
   @override
@@ -39,7 +49,7 @@ class _ProfilePageState extends State<ProfilePage> {
           Container(
             margin: const EdgeInsets.only(right: 16),
             child: ElevatedButton.icon(
-              onPressed: () {},
+              onPressed: _showLimitedOfferBottomSheet,
               icon: const Icon(Icons.diamond, color: Colors.white, size: 16),
               label: Text(
                 'profile.limited_offer'.tr(),

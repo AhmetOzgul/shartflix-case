@@ -30,6 +30,11 @@ class AppTheme {
           fontSize: 32,
           fontWeight: FontWeight.bold,
         ),
+        displaySmall: TextStyle(
+          color: textColor,
+          fontSize: 20,
+          fontWeight: FontWeight.w600,
+        ),
         titleLarge: TextStyle(
           color: textColor,
           fontSize: 18,
@@ -84,6 +89,11 @@ class AppTheme {
           color: textColor,
           fontSize: 32,
           fontWeight: FontWeight.bold,
+        ),
+        displaySmall: TextStyle(
+          color: textColor,
+          fontSize: 20,
+          fontWeight: FontWeight.w600,
         ),
         titleLarge: TextStyle(
           color: textColor,
