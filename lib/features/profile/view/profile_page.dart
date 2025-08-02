@@ -1,12 +1,14 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
 import 'package:shartflix/features/profile/bloc/profile/profile_bloc.dart';
 import 'package:shartflix/features/profile/bloc/profile/profile_event.dart';
 import 'package:shartflix/features/profile/bloc/profile/profile_state.dart';
 import '../widgets/profile_info_widget.dart';
 import '../widgets/liked_movies_widget.dart';
 import '../widgets/limited_offer_bottom_sheet.dart';
+import '../../../core/router/routes.dart';
 
 class ProfilePage extends StatefulWidget {
   const ProfilePage({super.key});
@@ -32,18 +34,29 @@ class _ProfilePageState extends State<ProfilePage> {
 
   @override
   Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+
     return Scaffold(
-      backgroundColor: Colors.black,
+      backgroundColor: theme.scaffoldBackgroundColor,
       appBar: AppBar(
         centerTitle: true,
-        backgroundColor: Colors.transparent,
+        backgroundColor: theme.appBarTheme.backgroundColor,
         elevation: 0,
+        leading: Padding(
+          padding: const EdgeInsets.only(left: 16.0),
+          child: IconButton(
+            icon: Icon(
+              Icons.settings,
+              color: theme.appBarTheme.foregroundColor,
+            ),
+            onPressed: () {
+              context.push(AppRoutes.settings);
+            },
+          ),
+        ),
         title: Padding(
           padding: const EdgeInsets.all(16.0),
-          child: Text(
-            'profile.title'.tr(),
-            style: Theme.of(context).textTheme.bodyLarge,
-          ),
+          child: Text('profile.title'.tr(), style: theme.textTheme.bodyLarge),
         ),
         actions: [
           Container(
@@ -82,8 +95,8 @@ class _ProfilePageState extends State<ProfilePage> {
         },
         builder: (context, state) {
           if (state is ProfileLoading) {
-            return const Center(
-              child: CircularProgressIndicator(color: Colors.white),
+            return Center(
+              child: CircularProgressIndicator(color: theme.primaryColor),
             );
           }
 

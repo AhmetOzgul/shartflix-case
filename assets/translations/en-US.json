@@ -79,6 +79,11 @@
         "liked_movies": "Liked Movies",
         "retry": "Retry",
         "no_favorites": "No favorites yet",
+        "dark_mode": "Dark Mode",
+        "light_mode": "Light Mode",
+        "logout_subtitle": "Sign out of your account",
+        "turkish": "Turkish",
+        "english": "English",
         "offer": {
             "title": "Limited Offer",
             "description": "Choose a token package to earn bonuses\nand unlock new episodes!",

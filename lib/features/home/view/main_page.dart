@@ -55,13 +55,15 @@ class _MainPageState extends State<MainPage> {
 
   @override
   Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+
     return MultiBlocProvider(
       providers: [
         BlocProvider.value(value: _homeBloc),
         BlocProvider.value(value: _profileBloc),
       ],
       child: Scaffold(
-        backgroundColor: Colors.black,
+        backgroundColor: theme.scaffoldBackgroundColor,
         body: PageView(
           controller: _pageController,
           onPageChanged: _onPageChanged,
@@ -71,7 +73,7 @@ class _MainPageState extends State<MainPage> {
           ],
         ),
         bottomNavigationBar: Container(
-          decoration: const BoxDecoration(color: Colors.black),
+          decoration: BoxDecoration(color: theme.scaffoldBackgroundColor),
           child: SafeArea(
             child: Padding(
               padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
@@ -83,12 +85,14 @@ class _MainPageState extends State<MainPage> {
                     label: 'main.home'.tr(),
                     isSelected: _currentIndex == 0,
                     onTap: () => _onNavItemTapped(0),
+                    theme: theme,
                   ),
                   _buildNavItem(
                     icon: Icons.person,
                     label: 'main.profile'.tr(),
                     isSelected: _currentIndex == 1,
                     onTap: () => _onNavItemTapped(1),
+                    theme: theme,
                   ),
                 ],
               ),
@@ -104,6 +108,7 @@ class _MainPageState extends State<MainPage> {
     required String label,
     required bool isSelected,
     required VoidCallback onTap,
+    required ThemeData theme,
   }) {
     return GestureDetector(
       onTap: onTap,
@@ -115,7 +120,7 @@ class _MainPageState extends State<MainPage> {
           border: Border.all(
             color: Theme.of(
               context,
-            ).colorScheme.onPrimary.withValues(alpha: 0.2),
+            ).colorScheme.onSurface.withValues(alpha: 0.2),
             width: 1,
           ),
         ),
@@ -125,17 +130,17 @@ class _MainPageState extends State<MainPage> {
             Icon(
               icon,
               color: isSelected
-                  ? Theme.of(context).colorScheme.onPrimary
-                  : Theme.of(
-                      context,
-                    ).colorScheme.onPrimary.withValues(alpha: 0.2),
+                  ? theme.colorScheme.onSurface
+                  : theme.colorScheme.onSurface.withValues(alpha: 0.2),
               size: 24,
             ),
             const SizedBox(width: 4),
             Text(
               label,
               style: TextStyle(
-                color: isSelected ? Colors.white : Colors.grey[600],
+                color: isSelected
+                    ? theme.colorScheme.onSurface
+                    : Colors.grey[600],
                 fontSize: 12,
                 fontWeight: isSelected ? FontWeight.bold : FontWeight.normal,
               ),

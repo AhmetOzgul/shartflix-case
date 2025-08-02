@@ -123,6 +123,10 @@ class UserService {
     return token != null && token.isNotEmpty;
   }
 
+  Future<void> logout() async {
+    await _networkService.clearToken();
+  }
+
   Future<void> _saveToken(String token) async {
     await _networkService.saveToken(token);
   }

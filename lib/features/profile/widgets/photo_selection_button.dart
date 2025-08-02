@@ -19,12 +19,14 @@ class PhotoSelectionButton extends StatelessWidget {
             width: 165,
             height: 165,
             decoration: BoxDecoration(
-              color: Colors.grey[900],
+              color: Theme.of(
+                context,
+              ).colorScheme.onSurface.withValues(alpha: 0.1),
               borderRadius: BorderRadius.circular(32),
               border: Border.all(
                 color: Theme.of(
                   context,
-                ).colorScheme.onPrimary.withValues(alpha: 0.1),
+                ).colorScheme.onSurface.withValues(alpha: 0.1),
                 width: 2,
               ),
             ),

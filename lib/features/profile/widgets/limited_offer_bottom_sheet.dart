@@ -113,13 +113,17 @@ class LimitedOfferBottomSheet extends StatelessWidget {
         Text(
           'profile.offer.title'.tr(),
           textAlign: TextAlign.center,
-          style: Theme.of(context).textTheme.displaySmall,
+          style: Theme.of(
+            context,
+          ).textTheme.displaySmall?.copyWith(color: Colors.white),
         ),
-        SizedBox(height: 8),
+        const SizedBox(height: 8),
         Text(
           'profile.offer.description'.tr(),
           textAlign: TextAlign.center,
-          style: Theme.of(context).textTheme.bodySmall,
+          style: Theme.of(
+            context,
+          ).textTheme.bodySmall?.copyWith(color: Colors.white),
         ),
       ],
     );
@@ -139,7 +143,9 @@ class LimitedOfferBottomSheet extends StatelessWidget {
         children: [
           Text(
             'profile.offer.bonuses_title'.tr(),
-            style: Theme.of(context).textTheme.bodyLarge,
+            style: Theme.of(
+              context,
+            ).textTheme.bodyLarge?.copyWith(color: Colors.white),
           ),
           const SizedBox(height: 16),
           Row(

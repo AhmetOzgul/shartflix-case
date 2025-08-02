@@ -1,11 +1,30 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:easy_localization/easy_localization.dart';
+import 'package:get_it/get_it.dart';
+import '../services/user_service.dart';
 import 'routes.dart';
 
 class AppRouter {
+  static final UserService _userService = GetIt.instance<UserService>();
+
   static final GoRouter router = GoRouter(
     initialLocation: AppRoutes.login,
+    redirect: (context, state) async {
+      final isLoggedIn = await _userService.isLoggedIn();
+      final isLoginRoute = state.matchedLocation == AppRoutes.login;
+      final isRegisterRoute = state.matchedLocation == AppRoutes.register;
+
+      if (isLoggedIn && (isLoginRoute || isRegisterRoute)) {
+        return AppRoutes.home;
+      }
+
+      if (!isLoggedIn && !isLoginRoute && !isRegisterRoute) {
+        return AppRoutes.login;
+      }
+
+      return null;
+    },
     routes: AppRoutes.routes,
 
     errorBuilder: (context, state) => Scaffold(

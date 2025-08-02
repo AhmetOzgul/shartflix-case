@@ -44,14 +44,16 @@ class _UploadPhotoPageState extends State<UploadPhotoPage> {
           }
         },
         child: Scaffold(
-          backgroundColor: Colors.black,
+          backgroundColor: Theme.of(context).scaffoldBackgroundColor,
           resizeToAvoidBottomInset: false,
           appBar: AppBar(
             backgroundColor: Colors.transparent,
             elevation: 0,
             title: Text(
               'profile.photo.title'.tr(),
-              style: const TextStyle(color: Colors.white),
+              style: Theme.of(context).textTheme.bodyLarge?.copyWith(
+                color: Theme.of(context).colorScheme.onSurface,
+              ),
             ),
             centerTitle: true,
           ),

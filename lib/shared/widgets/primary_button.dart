@@ -37,7 +37,12 @@ class PrimaryButton extends StatelessWidget {
                 Icon(icon, color: Colors.white, size: 24),
                 const SizedBox(width: 8),
               ],
-              Text(text, style: Theme.of(context).textTheme.bodyMedium),
+              Text(
+                text,
+                style: Theme.of(
+                  context,
+                ).textTheme.bodyMedium?.copyWith(color: Colors.white),
+              ),
             ],
           );
 

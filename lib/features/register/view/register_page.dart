@@ -53,7 +53,7 @@ class _RegisterPageContentState extends State<_RegisterPageContent> {
       builder: (context, state) {
         final registerBloc = context.read<RegisterBloc>();
         return Scaffold(
-          backgroundColor: Colors.black,
+          backgroundColor: Theme.of(context).scaffoldBackgroundColor,
           body: SafeArea(
             child: LayoutBuilder(
               builder: (context, constraints) {
@@ -300,6 +300,7 @@ class _RegisterPageContentState extends State<_RegisterPageContent> {
               linkText,
               style: Theme.of(context).textTheme.bodySmall?.copyWith(
                 decoration: TextDecoration.underline,
+                color: Theme.of(context).colorScheme.onSurface,
               ),
             ),
           ),
@@ -316,7 +317,7 @@ class _RegisterPageContentState extends State<_RegisterPageContent> {
     return RichText(
       text: TextSpan(
         style: Theme.of(context).textTheme.bodySmall?.copyWith(
-          color: Theme.of(context).colorScheme.onPrimary.withValues(alpha: 0.6),
+          color: Theme.of(context).colorScheme.onSurface.withValues(alpha: 0.6),
         ),
         children: spans,
       ),

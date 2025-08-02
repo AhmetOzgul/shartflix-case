@@ -79,6 +79,11 @@
         "add_photo": "Fotoğraf Ekle",
         "liked_movies": "Beğendiğim Filmler",
         "retry": "Tekrar Dene",
+        "dark_mode": "Karanlık Mod",
+        "light_mode": "Aydınlık Mod",
+        "logout_subtitle": "Hesabınızdan çıkış yapın",
+        "turkish": "Türkçe",
+        "english": "İngilizce",
         "offer": {
             "title": "Sınırlı Teklif",
             "description": "Jeton paketini seçerek bonus kazan\nve yeni bölümlerin kilidini açın!",

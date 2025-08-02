@@ -48,7 +48,7 @@ class _LoginPageContentState extends State<_LoginPageContent> {
       builder: (context, state) {
         final loginBloc = context.read<LoginBloc>();
         return Scaffold(
-          backgroundColor: Colors.black,
+          backgroundColor: Theme.of(context).scaffoldBackgroundColor,
           body: SafeArea(
             child: LayoutBuilder(
               builder: (context, constraints) {

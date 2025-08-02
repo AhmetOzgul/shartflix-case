@@ -24,6 +24,8 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+
     return BlocConsumer<HomeBloc, HomeState>(
       listener: (context, state) {
         if (state is HomeError) {
@@ -34,8 +36,8 @@ class _HomePageState extends State<HomePage> {
       },
       builder: (context, state) {
         if (state is HomeLoading) {
-          return const Center(
-            child: CircularProgressIndicator(color: Colors.white),
+          return Center(
+            child: CircularProgressIndicator(color: theme.primaryColor),
           );
         }
 
@@ -70,7 +72,7 @@ class _HomePageState extends State<HomePage> {
               children: [
                 Text(
                   state.message,
-                  style: const TextStyle(color: Colors.white),
+                  style: TextStyle(color: theme.textTheme.bodyLarge?.color),
                   textAlign: TextAlign.center,
                 ),
                 const SizedBox(height: 16),
