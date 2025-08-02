@@ -19,12 +19,14 @@ class _MainPageState extends State<MainPage> {
   int _currentIndex = 0;
   late final HomeBloc _homeBloc;
   late final ProfileBloc _profileBloc;
+  late final PageController _pageController;
 
   @override
   void initState() {
     super.initState();
     _homeBloc = HomeBloc()..add(const LoadMovies());
     _profileBloc = ProfileBloc()..add(const LoadProfile());
+    _pageController = PageController();
 
     _homeBloc.setProfileBloc(_profileBloc);
   }
@@ -33,7 +35,22 @@ class _MainPageState extends State<MainPage> {
   void dispose() {
     _homeBloc.close();
     _profileBloc.close();
+    _pageController.dispose();
     super.dispose();
+  }
+
+  void _onPageChanged(int index) {
+    setState(() {
+      _currentIndex = index;
+    });
+  }
+
+  void _onNavItemTapped(int index) {
+    _pageController.animateToPage(
+      index,
+      duration: const Duration(milliseconds: 300),
+      curve: Curves.easeInOut,
+    );
   }
 
   @override
@@ -45,9 +62,13 @@ class _MainPageState extends State<MainPage> {
       ],
       child: Scaffold(
         backgroundColor: Colors.black,
-        body: IndexedStack(
-          index: _currentIndex,
-          children: [const HomePage(), const ProfilePage()],
+        body: PageView(
+          controller: _pageController,
+          onPageChanged: _onPageChanged,
+          children: [
+            HomePage(key: const PageStorageKey('home_page')),
+            ProfilePage(key: const PageStorageKey('profile_page')),
+          ],
         ),
         bottomNavigationBar: Container(
           decoration: const BoxDecoration(color: Colors.black),
@@ -61,13 +82,13 @@ class _MainPageState extends State<MainPage> {
                     icon: Icons.home,
                     label: 'main.home'.tr(),
                     isSelected: _currentIndex == 0,
-                    onTap: () => setState(() => _currentIndex = 0),
+                    onTap: () => _onNavItemTapped(0),
                   ),
                   _buildNavItem(
                     icon: Icons.person,
                     label: 'main.profile'.tr(),
                     isSelected: _currentIndex == 1,
-                    onTap: () => setState(() => _currentIndex = 1),
+                    onTap: () => _onNavItemTapped(1),
                   ),
                 ],
               ),
