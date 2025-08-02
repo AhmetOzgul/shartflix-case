@@ -7,8 +7,10 @@ import '../../features/profile/view/upload_photo_page.dart';
 import '../../features/home/view/main_page.dart';
 import '../../features/settings/view/settings_page.dart';
 import '../../features/settings/bloc/settings_bloc.dart';
+import '../../shared/widgets/splash_screen.dart';
 
 class AppRoutes {
+  static const String splash = '/';
   static const String login = '/login';
   static const String register = '/register';
   static const String home = '/home';
@@ -16,6 +18,7 @@ class AppRoutes {
   static const String uploadPhoto = '/upload-photo';
   static const String settings = '/settings';
 
+  static const String splashName = 'splash';
   static const String loginName = 'login';
   static const String registerName = 'register';
   static const String homeName = 'home';
@@ -61,6 +64,12 @@ class AppRoutes {
   }
 
   static final List<RouteBase> routes = [
+    GoRoute(
+      path: splash,
+      name: splashName,
+      pageBuilder: (context, state) =>
+          _buildPageWithFadeTransition(const SplashScreen(), state),
+    ),
     GoRoute(
       path: login,
       name: loginName,
